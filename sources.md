@@ -23,14 +23,14 @@ The user is responsible for accepting the download license as printed in the dow
 
 ## Northern Ireland
 
-Information is made available on the [Northern Ireland Statistics and Research Agency](http://www.nisra.gov.uk/) website, filed within [Deprivation Super Output Areas](http://www.nisra.gov.uk/deprivation/super_output_areas.htm).
+Information is made available on the [Northern Ireland Statistics and Research Agency](http://www.nisra.gov.uk/) website, filed within [Deprivation Super Output Areas](http://www.nisra.gov.uk/deprivation/super_output_areas.htm). The shapefiles are provided using [Irish Grid Reference System (TM65/Irish Grid - EPSG Projection 29902)](http://spatialreference.org/ref/epsg/29902/).
 
     11M  SOA_NI_ESRI.zip
 
 
 ## Ireland
 
-Information is made available on Ireland's [Central Statistics Office](http://www.cso.ie/en/) website, filed under [Boundary Files](http://www.cso.ie/en/census/census2011boundaryfiles/).
+Information is made available on Ireland's [Central Statistics Office](http://www.cso.ie/en/) website, filed under [Boundary Files](http://www.cso.ie/en/census/census2011boundaryfiles/). The shapefiles are provided using [Irish Grid Reference System (TM65/Irish Grid - EPSG Projection 29902)](http://spatialreference.org/ref/epsg/29902/).
 
 > Note that whilst the data is hotlinkable, it is provided with [a disclaimer](http://census.cso.ie/censusasp/saps/boundaries/ED_SA%20Disclaimer.htm).
 
