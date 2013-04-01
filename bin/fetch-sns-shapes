@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 BASEDIR=$(dirname $(dirname $0))
-ARCHIVE=$BASEDIR/data/SNS_Geography_14_3_2013.zip
-TARGET=$BASEDIR/shapes/scotland
+ARCHIVE=$BASEDIR/data-source/SNS_Geography_14_3_2013.zip
+TARGET=$BASEDIR/data/${1:-sns/shapes}
 HOMEPAGE=http://www.sns.gov.uk
 FORMPAGE=http://www.sns.gov.uk/Downloads/DownloadGeography.aspx
+
+COOKIEJAR=sns_shape_cookies
 
 
 ##    ____                      _                 _ 
@@ -25,9 +27,9 @@ else
     TEMPDIR=$(mktemp -d -t sns)
 
     # Start a session on the server
-    curl $CURLOPTS -sc sns_cookies $HOMEPAGE > /dev/null
+    curl $CURLOPTS -sc $COOKIEJAR $HOMEPAGE > /dev/null
     # Get the download form from the server
-    curl $CURLOPTS -sb sns_cookies $FORMPAGE > sns_form.html
+    curl $CURLOPTS -sb $COOKIEJAR $FORMPAGE > sns_form.html
 
     # Print download license
     if [ -z "$(which lynx)" ]; then
@@ -65,10 +67,10 @@ else
     )
 
     # Submit the form to receive the shape files
-    curl $CURLOPTS -o $(basename $ARCHIVE) -b sns_cookies $DATA $FORMPAGE
+    curl $CURLOPTS -o $(basename $ARCHIVE) -b $COOKIEJAR $DATA $FORMPAGE
 
     # Clean-up
-    rm sns_cookies
+    rm $COOKIEJAR
     rm sns_form.html
     rm -rf $TEMPDIR
 
