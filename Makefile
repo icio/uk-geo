@@ -9,16 +9,16 @@ clean:
 fetch: fetch-cso fetch-nisra fetch-sns fetch-ons
 
 fetch-cso: deps
-	bin/fetch-cso
+	bin/fetch-cso-shapes
 
 fetch-nisra: deps
-	bin/fetch-nisra
+	bin/fetch-nisra-shapes
 
 fetch-sns: deps
-	bin/fetch-sns
+	bin/fetch-sns-shapes
 
 fetch-ons: deps
-	bin/fetch-ons
+	bin/fetch-ons-shapes
 
 deps:
 	bin/dependencies.sh
