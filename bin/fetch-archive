@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-if [ $# -gt 2 ] || [ $# -lt 1 ]; then
+if [ $# -gt 3 ] || [ $# -lt 1 ]; then
     cat <<USAGE
-Usage: fetch-archive URL TARGET
-URL     The URL of the archive to be downloaded
-TARGET  The folder to which the contents of the archive should be extracted
+Usage: fetch-archive URL [TARGET] [BASENAME]
+URL      The URL of the archive to be downloaded
+TARGET   The folder to which the contents of the archive should be extracted
+BASENAME The name for the downloaded file
 USAGE
     exit 1
 fi
@@ -13,7 +14,7 @@ BASEDIR=$(dirname $(dirname $0))
 SOURCE=$1
 BASENAME=$(basename $SOURCE)
 TARGET=$BASEDIR/data/${2:-$BASENAME}
-ARCHIVE=$BASEDIR/data-source/$BASENAME       
+ARCHIVE=$BASEDIR/data-source/${3:-$BASENAME}
 
 if [ -e $ARCHIVE ]; then
     echo File $ARCHIVE exists. Not downloading.

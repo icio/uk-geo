@@ -35,7 +35,7 @@ fetch-sns-stats: deps
 
 # Fetch: ONS
 
-fetch-ons: fetch-ons-boundaries fetch-ons-oa fetch-ons-lsoa fetch-ons-msoa
+fetch-ons: fetch-ons-boundaries fetch-ons-oa fetch-ons-lsoa fetch-ons-msoa fetch-postcode-onspd fetch-postcode-nspl
 
 fetch-ons-boundaries: deps
 	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Boundaries/2011/OA/OA_2011_EW_BFE_shp.zip ons/boundaries
@@ -48,6 +48,12 @@ fetch-ons-lsoa: deps
 
 fetch-ons-msoa: deps
 	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Lookups/2011/Other/MSOA01_MSOA11_LAD11_EW_LU_csv.zip ons/msoa
+
+fetch-postcode-onspd: deps
+	CURLOPTS=-L bin/fetch-archive http://www.ons.gov.uk/ons/external-links/other-ns-online/census-geography/onspd/onspd-nov-2012-csv.html ons/postcode/onspd ONSPD_FEB_2013_csv.zip
+
+fetch-postcode-nspl: deps
+	CURLOPTS=-L bin/fetch-archive http://www.ons.gov.uk/ons/external-links/other-ns-online/census-geography/nspl/nspl-nov-2012-csv.html ons/postcode/nspl NSPL_FEB_2013_csv.zip
 
 
 # Fetch: CSO
