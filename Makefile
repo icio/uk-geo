@@ -35,10 +35,19 @@ fetch-sns-stats: deps
 
 # Fetch: ONS
 
-fetch-ons: fetch-ons-boundaries
+fetch-ons: fetch-ons-boundaries fetch-ons-oa fetch-ons-lsoa fetch-ons-msoa
 
 fetch-ons-boundaries: deps
 	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Boundaries/2011/OA/OA_2011_EW_BFE_shp.zip ons/boundaries
+
+fetch-ons-oa: deps
+	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Lookups/2011/OA/OA01_OA11_LAD11_EW_LU_csv.zip ons/oa
+
+fetch-ons-lsoa: deps
+	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Lookups/2011/Other/LSOA01_LSOA11_LAD11_EW_LU_csv.zip ons/lsoa
+
+fetch-ons-msoa: deps
+	bin/fetch-archive http://data.statistics.gov.uk/ONSGeography/CensusGeography/Lookups/2011/Other/MSOA01_MSOA11_LAD11_EW_LU_csv.zip ons/msoa
 
 
 # Fetch: CSO
