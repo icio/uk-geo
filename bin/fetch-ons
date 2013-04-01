@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+BASEDIR=$(dirname $(dirname $0))
+ARCHIVE=$BASEDIR/data/OA_2011_EW_BFE_shp.zip
+TARGET=$BASEDIR/shapes/england-wales
+SOURCE=http://data.statistics.gov.uk/ONSGeography/CensusGeography/Boundaries/2011/OA/OA_2011_EW_BFE_shp.zip
+
+
+##    ____                      _                 _ 
+##   |  _ \  _____      ___ __ | | ___   __ _  __| |
+##   | | | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |
+##   | |_| | (_) \ V  V /| | | | | (_) | (_| | (_| |
+##   |____/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|
+##        
+
+if [ -e $ARCHIVE ]; then
+    echo File $ARCHIVE exists. Not downloading.
+else
+
+    echo Downloading...
+    mkdir -p $(dirname $ARCHIVE)
+    curl $CURLOPTS $SOURCE > $ARCHIVE
+
+fi
+
+
+##    _____      _                  _   
+##   | ____|_  _| |_ _ __ __ _  ___| |_ 
+##   |  _| \ \/ / __| '__/ _` |/ __| __|
+##   | |___ >  <| |_| | | (_| | (__| |_ 
+##   |_____/_/\_\\__|_|  \__,_|\___|\__|
+##                                      
+
+if [ ! -f $ARCHIVE ]; then
+    echo File $ARCHIVE exists but is not a regular file. Cannot extract.
+else
+
+    echo Extracting...
+    mkdir -p $TARGET
+    unzip -nd $TARGET $ARCHIVE
+
+fi
