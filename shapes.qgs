@@ -48,7 +48,7 @@
     <projectlayers layercount="4">
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>Census2011_Local_Electoral_Areas_200820130401023742077</id>
-            <datasource>./shapes/ireland/Census2011_Local_Electoral_Areas_2008.shp</datasource>
+            <datasource>./data/cso/electoral-divisions/Census2011_Electoral_Divisions_generalised20m.shp</datasource>
             <title></title>
             <abstract></abstract>
             <layername>ireland</layername>
@@ -113,7 +113,7 @@
         </maplayer>
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>DataZone_2001_bdry20130401023742032</id>
-            <datasource>./shapes/scotland/DataZone_2001_bdry.shp</datasource>
+            <datasource>./data/sns/shapes/DataZone_2001_bdry.shp</datasource>
             <title></title>
             <abstract></abstract>
             <layername>scotland</layername>
@@ -178,7 +178,7 @@
         </maplayer>
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>OA_2011_EW_BFE20130401023742053</id>
-            <datasource>./shapes/england-wales/OA_2011_EW_BFE.shp</datasource>
+            <datasource>./data/ons/boundaries/OA_2011_EW_BFE.shp</datasource>
             <title></title>
             <abstract></abstract>
             <layername>england-wales</layername>
@@ -243,7 +243,7 @@
         </maplayer>
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>soa20130401023742162</id>
-            <datasource>./shapes/northern-ireland/soa.shp</datasource>
+            <datasource>./data/nisra/super-output-areas/soa.shp</datasource>
             <title></title>
             <abstract></abstract>
             <layername>northern ireland</layername>
