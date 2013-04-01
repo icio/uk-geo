@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 2 ] || [ $# -lt 1 ]; then
+    cat <<USAGE
+Usage: fetch-archive URL TARGET
+URL     The URL of the archive to be downloaded
+TARGET  The folder to which the contents of the archive should be extracted
+USAGE
+    exit 1
+fi
+
+BASEDIR=$(dirname $(dirname $0))
+SOURCE=$1
+BASENAME=$(basename $SOURCE)
+TARGET=$BASEDIR/data/${2:-$BASENAME}
+ARCHIVE=$BASEDIR/data-source/$BASENAME       
+
+if [ -e $ARCHIVE ]; then
+    echo File $ARCHIVE exists. Not downloading.
+else
+    echo Downloading...
+    mkdir -p $(dirname $ARCHIVE)
+    curl $CURLOPTS -o $ARCHIVE $SOURCE
+
+    if [ ! -f $ARCHIVE ]; then
+        echo File $ARCHIVE could not be downloaded from $SOURCE
+        exit 1
+    fi
+fi                                    
+
+if [ ! -f $ARCHIVE ]; then
+    echo File $ARCHIVE exists but is not a regular file. Cannot extract.
+    exit 1
+else
+    echo Extracting...
+    mkdir -p $TARGET
+    unzip -nd $TARGET $ARCHIVE
+fi

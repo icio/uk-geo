@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 2 ] || [ $# -lt 1 ]; then
+    cat <<USAGE
+Usage: fetch-file URL TARGET
+URL     The URL of the file to be downloaded
+TARGET  The folder to which the file should be copied
+USAGE
+    exit 1
+fi
+
+BASEDIR=$(dirname $(dirname $0))
+SOURCE=$1
+BASENAME=$(basename $SOURCE)
+TARGET=$BASEDIR/data/${2:-$BASENAME}
+FILE=$BASEDIR/data-source/$BASENAME       
+
+if [ -e $FILE ]; then
+    echo File $FILE exists. Not downloading.
+else
+    echo Downloading...
+    mkdir -p $(dirname $FILE)
+    curl $CURLOPTS -o $FILE $SOURCE
+
+    if [ ! -f $FILE ]; then
+        echo File $FILE could not be downloaded from $SOURCE
+        exit 1
+    fi
+fi                                    
+
+if [ ! -f $FILE ]; then
+    echo File $FILE exists but is not a regular file. Cannot copy.
+    exit 1
+else
+    echo Extracting...
+    mkdir -p $TARGET
+    cp $FILE $TARGET
+fi
